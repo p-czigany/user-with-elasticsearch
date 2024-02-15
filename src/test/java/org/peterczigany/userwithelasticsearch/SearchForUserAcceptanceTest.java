@@ -16,7 +16,7 @@ import org.springframework.test.web.servlet.MockMvc;
 @SpringBootTest
 @AutoConfigureMockMvc
 class SearchForUserAcceptanceTest {
-  @Autowired MockMvc mockMvc;
+  @Autowired private MockMvc mockMvc;
 
   /**
    * If correct UserSearchRequest (firstName: string, lastName: string) is sent to POST
