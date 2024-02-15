@@ -42,8 +42,8 @@ class CreateUserAcceptanceTest {
   }
 
   /**
-   * If correct CreateUserRequest (firstName: string, lastName: string) is sent to
-   * POST '/api/elasticsearch/create', there will be an UserResponse (id: uuid, firstName: string,
+   * If correct CreateUserRequest (firstName: string, lastName: string) is sent to POST
+   * '/api/elasticsearch/create', there will be an UserResponse (id: uuid, firstName: string,
    * lastName: string) in the response.
    */
   @ParameterizedTest
@@ -80,5 +80,6 @@ class CreateUserAcceptanceTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(createUserRequestJson))
         .andExpect(status().isBadRequest());
+    // todo: expect error message
   }
 }
