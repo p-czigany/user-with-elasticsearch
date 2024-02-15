@@ -24,7 +24,7 @@ public class UserService {
   }
 
   public List<UserResponse> searchUsers(UserSearchRequest userSearchRequest) {
-    return repository.findByFirstAndLastNameUsingCustomQuery(
+    return repository.findByFirstNameAndLastName(
         userSearchRequest.firstName(), userSearchRequest.lastName());
   }
 }

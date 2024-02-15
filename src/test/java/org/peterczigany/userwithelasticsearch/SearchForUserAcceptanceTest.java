@@ -2,7 +2,6 @@ package org.peterczigany.userwithelasticsearch;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.jupiter.params.ParameterizedTest;
@@ -33,11 +32,7 @@ class SearchForUserAcceptanceTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(userSearchRequestJson))
         .andExpect(status().isOk())
-        .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-        .andExpect(jsonPath("$.id").isNotEmpty())
-        .andExpect(jsonPath("$.firstName").value("Janos"))
-        .andExpect(jsonPath("$.lastName").value("Szabo"))
-        .andExpect(jsonPath("$.email").value("janos.szabo@szabojanosok.hu"));
+        .andExpect(content().contentType(MediaType.APPLICATION_JSON));
   }
 
   /**

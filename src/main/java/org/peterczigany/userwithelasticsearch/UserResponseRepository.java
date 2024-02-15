@@ -7,6 +7,8 @@ import org.springframework.data.elasticsearch.repository.ElasticsearchRepository
 
 public interface UserResponseRepository extends ElasticsearchRepository<UserResponse, UUID> {
   @Query(
-      "{\"query\": {\"bool\": {\"must\": [{\"wildcard\": {\"firstName\": \"*?0*\"}},{\"wildcard\": {\"lastName\": \"*?1*\"}}]}}}")
+      "{\"query\": {\"bool\": {\"must\": [ {\"wildcard\": {\"firstName\": \"*?0*\" } }, { \"wildcard\": { \"lastName\": \"*?1*\" } }] } } }")
   List<UserResponse> findByFirstAndLastNameUsingCustomQuery(String firstName, String lastName);
+
+  List<UserResponse> findByFirstNameAndLastName(String firstName, String lastName);
 }
