@@ -61,4 +61,18 @@ class UserControllerTest {
         .andExpect(jsonPath("$.lastName").value("Szabo"))
         .andExpect(jsonPath("$.email").doesNotExist());
   }
+
+  @ParameterizedTest
+  @CsvFileSource(resources = "/invalidCreateUserRequestJson.csv")
+  void Respond_with_400_and_error_message_to_incorrect_user_creation_request(
+      String createUserRequestJson) throws Exception {
+
+    mockMvc
+        .perform(
+            post("http://localhost:8080/api/elasticsearch/create")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(createUserRequestJson))
+        .andExpect(status().isBadRequest());
+    // todo: expect error message
+  }
 }
