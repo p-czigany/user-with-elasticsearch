@@ -1,0 +1,18 @@
+"{
+    ""lastName"": ""Szabo"",
+    ""email"": ""janos.szabo@szabojanosok.hu""
+}",
+"{
+    ""firstName"": ""Janos"",
+    ""email"": ""janos.szabo@szabojanosok.hu""
+}",
+"{
+    ""firstName"": """",
+    ""lastName"": ""Szabo"",
+    ""email"": ""janos.szabo@szabojanosok.hu""
+}",
+"{
+    ""firstName"": ""Janos"",
+    ""lastName"": """",
+    ""email"": ""janos.szabo@szabojanosok.hu""
+}"
