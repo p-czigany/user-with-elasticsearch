@@ -1,3 +1,6 @@
 package org.peterczigany.userwithelasticsearch;
 
-public record CreateUserRequest(String firstName, String lastName, String email) {}
+import jakarta.validation.constraints.NotBlank;
+
+public record CreateUserRequest(
+    @NotBlank String firstName, @NotBlank String lastName, String email) {}
