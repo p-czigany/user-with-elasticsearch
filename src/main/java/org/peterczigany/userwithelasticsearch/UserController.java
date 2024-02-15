@@ -2,6 +2,7 @@ package org.peterczigany.userwithelasticsearch;
 
 import jakarta.validation.Valid;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,6 +27,12 @@ public class UserController {
   @ResponseStatus(HttpStatus.OK)
   public UserResponse createUser(@RequestBody @Valid CreateUserRequest createUserRequest) {
     return service.createUser(createUserRequest);
+  }
+
+  @PostMapping(value = "/api/elasticsearch/search", produces = "application/json")
+  @ResponseStatus(HttpStatus.OK)
+  public List<UserResponse> searchUsers(@RequestBody @Valid UserSearchRequest userSearchRequest) {
+    return service.searchUsers(userSearchRequest);
   }
 
   @ResponseStatus(HttpStatus.BAD_REQUEST)

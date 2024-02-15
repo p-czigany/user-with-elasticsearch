@@ -1,10 +1,8 @@
 package org.peterczigany.userwithelasticsearch;
 
 import java.util.UUID;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.Document;
 
-public record UserResponse(UUID id, String firstName, String lastName, String email) {
-
-  public UserResponse() {
-    this(null, null, null, null);
-  }
-}
+@Document(indexName = "user")
+public record UserResponse(@Id UUID id, String firstName, String lastName, String email) {}
