@@ -23,9 +23,11 @@ class UserControllerTest {
 
   @ParameterizedTest
   @CsvFileSource(resources = "/validCreateUserRequestJson_withEmail.csv")
-  void testWhetherServiceLayerIsCalled(String createUserRequestJson) throws Exception {
+  void Create_a_new_user_with_email_successfully(String createUserRequestJson) throws Exception {
 
-    Mockito.when(service.createUser(any(CreateUserRequest.class))).thenReturn(new UserResponse(UUID.randomUUID(), "Janos", "Szabo", "janos.szabo@szabojanosok.hu"));
+    Mockito.when(service.createUser(any(CreateUserRequest.class)))
+        .thenReturn(
+            new UserResponse(UUID.randomUUID(), "Janos", "Szabo", "janos.szabo@szabojanosok.hu"));
 
     mockMvc
         .perform(
@@ -38,5 +40,25 @@ class UserControllerTest {
         .andExpect(jsonPath("$.firstName").value("Janos"))
         .andExpect(jsonPath("$.lastName").value("Szabo"))
         .andExpect(jsonPath("$.email").value("janos.szabo@szabojanosok.hu"));
+  }
+
+  @ParameterizedTest
+  @CsvFileSource(resources = "/validCreateUserRequestJson_withoutEmail.csv")
+  void Create_a_new_user_without_email_successfully(String createUserRequestJson) throws Exception {
+
+    Mockito.when(service.createUser(any(CreateUserRequest.class)))
+        .thenReturn(new UserResponse(UUID.randomUUID(), "Janos", "Szabo", null));
+
+    mockMvc
+        .perform(
+            post("http://localhost:8080/api/elasticsearch/create")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(createUserRequestJson))
+        .andExpect(status().isOk())
+        .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+        .andExpect(jsonPath("$.id").isNotEmpty())
+        .andExpect(jsonPath("$.firstName").value("Janos"))
+        .andExpect(jsonPath("$.lastName").value("Szabo"))
+        .andExpect(jsonPath("$.email").doesNotExist());
   }
 }
