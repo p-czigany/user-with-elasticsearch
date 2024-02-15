@@ -49,7 +49,8 @@ class SearchForUserAcceptanceTest {
             post("http://localhost:8080/api/elasticsearch/search")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(userSearchRequestJson))
-        .andExpect(status().isBadRequest());
-    // todo: expect error message
+        .andExpect(status().isBadRequest())
+        .andExpect(content().contentType(MediaType.APPLICATION_JSON));
+    // todo: expect specific error message
   }
 }
