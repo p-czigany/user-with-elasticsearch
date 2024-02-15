@@ -1,0 +1,14 @@
+"{
+    ""lastName"": ""Szabo""
+}",
+"{
+    ""firstName"": ""Janos""
+}",
+"{
+    ""firstName"": """",
+    ""lastName"": ""Szabo""
+}",
+"{
+    ""firstName"": ""Janos"",
+    ""lastName"": """"
+}"
