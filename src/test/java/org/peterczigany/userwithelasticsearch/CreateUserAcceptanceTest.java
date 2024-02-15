@@ -79,7 +79,8 @@ class CreateUserAcceptanceTest {
             post("http://localhost:8080/api/elasticsearch/create")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(createUserRequestJson))
-        .andExpect(status().isBadRequest());
-    // todo: expect error message
+        .andExpect(status().isBadRequest())
+        .andExpect(content().contentType(MediaType.APPLICATION_JSON));
+    // todo: expect specific error message
   }
 }

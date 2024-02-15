@@ -74,6 +74,6 @@ class UserControllerTest {
                 .content(createUserRequestJson))
         .andExpect(status().isBadRequest())
         .andExpect(content().contentType(MediaType.APPLICATION_JSON));
-    // todo: expect error message
+    // todo: expect specific error message
   }
 }
